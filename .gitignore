@@ -1,11 +1,12 @@
 *.class
-#*.gitignore
+*.gitignore
 *.settings
 # Package Files #
 *.jar
 *.war
 *.ear
 /target/
+.idea
 /log/
 /.settings/
 *.project
