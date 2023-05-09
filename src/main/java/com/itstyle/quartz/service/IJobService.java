@@ -6,7 +6,7 @@ import org.quartz.SchedulerException;
 
 public interface IJobService {
 
-    List<QuartzEntity> listQuartzEntity(QuartzEntity quartz,Integer pageNo,Integer pageSize) throws SchedulerException;
+    List<QuartzEntity> listQuartzEntity(String jobName) throws SchedulerException;
 
     Long listQuartzEntity();
 }

@@ -24,13 +24,16 @@ public class JobServiceImpl implements IJobService {
     private Scheduler scheduler;
 
     @Override
-    public List<QuartzEntity> listQuartzEntity(QuartzEntity quartz, Integer pageNo, Integer pageSize) throws SchedulerException {
-        List<QuartzEntity> list = mapper.queryListModel(null);
+    public List<QuartzEntity> listQuartzEntity(String jobName) throws SchedulerException {
+        List<QuartzEntity> list = mapper.queryListModel(jobName);
         //获取执行的方法名
-        for (QuartzEntity quartzEntity : list) {
+        if (list.size() > 0) {
+            for (QuartzEntity quartzEntity : list) {
             JobKey key = new JobKey(quartzEntity.getJobName(), quartzEntity.getJobGroup());
             JobDetail jobDetail = scheduler.getJobDetail(key);
+            System.out.println(jobDetail);
             quartzEntity.setJobMethodName(jobDetail.getJobDataMap().getString("jobMethodName"));
+            }
         }
         return list;
     }
