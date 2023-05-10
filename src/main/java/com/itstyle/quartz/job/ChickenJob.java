@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.quartz.*;
+import org.springframework.util.StringUtils;
 
 /**
  * 实现序列化接口、防止重启应用出现quartz Couldn't retrieve job because a required class was not found 的问题
@@ -25,10 +26,20 @@ public class ChickenJob implements Job,Serializable {
          * 获取任务中保存的方法名字，动态调用方法
          */
         String methodName = dataMap.getString("jobMethodName");
+        //参数
+        String methodArgs = dataMap.getString("jobMethodArgs");
+
+        Method method = null;
         try {
             ChickenJob job = new ChickenJob();
-            Method method = job.getClass().getMethod(methodName);
-            method.invoke(job);
+
+            if (StringUtils.isEmpty(methodArgs)){
+                method = job.getClass().getMethod(methodName);
+                method.invoke(job);
+            }else {
+                method = job.getClass().getMethod(methodName,methodArgs.getClass());
+                method.invoke(job,methodArgs);
+            }
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -44,7 +55,7 @@ public class ChickenJob implements Job,Serializable {
     public void test1(){
         System.out.println("测试方法1");
     }
-    public void test2(){
-	    System.out.println("测试方法2");
+    public void test2(String s){
+	    System.out.println(s);
     }
 }

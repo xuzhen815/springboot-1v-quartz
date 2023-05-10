@@ -17,9 +17,9 @@ import org.springframework.stereotype.Component;
 import com.itstyle.quartz.entity.QuartzEntity;
 import com.itstyle.quartz.service.IJobService;
 /**
- * 初始化一个测试Demo任务
- * 创建者 爪哇笔记
- * 创建时间	2018年4月3日
+ * @author xuzhen
+ * @version 1.0
+ * @date 2023/5/5 16:05
  */
 @Component
 public class TaskRunner implements ApplicationRunner{

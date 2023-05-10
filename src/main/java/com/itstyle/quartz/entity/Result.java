@@ -3,9 +3,9 @@ package com.itstyle.quartz.entity;
 import java.util.HashMap;
 import java.util.Map;
 /**
- * 页面响应entity
- * 创建者 张志朋
- * 创建时间	2018年3月8日
+ * @author xuzhen
+ * @version 1.0
+ * @date 2023/5/5 16:05
  */
 public class Result extends HashMap<String, Object> {
 

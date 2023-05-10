@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>任务首页 - 科帮网</title>
-    <meta name="author" content="小柒2012" />
+    <title>任务首页</title>
+    <meta name="author" content="xuzhen" />
     <meta name="site" content="https://blog.52itstyle.com" />
     <link rel="stylesheet" th:href="@{/iview/iview.css}">
     <script th:src="@{/libs/jquery-3.2.1.min.js}" type="text/javascript"></script>
@@ -38,6 +38,9 @@
             <Form-item label="执行方法" prop="jobMethodName">
                 <i-input v-model="formQuartz.jobMethodName" :value.sync="formQuartz.jobMethodName" placeholder="请输入执行类"></i-input>
             </Form-item>
+			<Form-item label="执行方法" prop="jobMethodArgs">
+				<i-input v-model="formQuartz.jobMethodArgs" :value.sync="formQuartz.jobMethodArgs" placeholder="请输入执行类参数"></i-input>
+			</Form-item>
 	        <Form-item label="执行时间" prop="cronExpression">
 	            <i-input v-model="formQuartz.cronExpression" :value.sync="formQuartz.cronExpression" placeholder="请输入任务执行时间"></i-input>
 	        </Form-item>
@@ -57,7 +60,8 @@ var vm = new Vue({
 			//旧任务名称  用于修改
 			oldJobName : '',
 			oldJobGroup : '',
-			jobMethodName:''
+			jobMethodName:'',
+			jobMethodArgs: ''
         },
         ruleValidate: {
         	jobName: [
@@ -108,7 +112,7 @@ var vm = new Vue({
 		}
 	},
 	created : function() {
-		
+
 	}
 })
 

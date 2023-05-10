@@ -5,10 +5,9 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
- * 启动类
- * 创建者 爪哇笔记
- * 创建时间	2018年3月28日
- * API接口测试：http://localhost:8080/quartz/swagger-ui.html
+ * @author xuzhen
+ * @version 1.0
+ * @date 2023/5/5 16:05
  */
 @MapperScan("com.itstyle.quartz.**.mapper")
 @SpringBootApplication

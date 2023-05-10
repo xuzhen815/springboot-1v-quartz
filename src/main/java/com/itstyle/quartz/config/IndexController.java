@@ -3,9 +3,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 /**
- * 通用访问拦截匹配
- * 创建者 爪哇笔记
- * 创建时间	2018年4月3日
+ * @author xuzhen
+ * @version 1.0
+ * @date 2023/5/5 16:05
  */
 @Controller
 public class IndexController {

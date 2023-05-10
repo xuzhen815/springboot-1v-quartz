@@ -9,8 +9,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import com.itstyle.quartz.entity.QuartzEntity;
 import com.itstyle.quartz.service.IJobService;
+import org.springframework.util.StringUtils;
 
-
+/**
+ * @author xuzhen
+ * @version 1.0
+ * @date 2023/5/5 16:05
+ */
 @Service
 public class JobServiceImpl implements IJobService {
 
@@ -30,6 +35,7 @@ public class JobServiceImpl implements IJobService {
             JobDetail jobDetail = scheduler.getJobDetail(key);
             System.out.println(jobDetail);
             quartzEntity.setJobMethodName(jobDetail.getJobDataMap().getString("jobMethodName"));
+            quartzEntity.setJobMethodArgs(jobDetail.getJobDataMap().getString("jobMethodArgs"));
             }
         }
         return list;
@@ -57,7 +63,12 @@ public class JobServiceImpl implements IJobService {
         JobDetail job = JobBuilder.newJob(cls).withIdentity(quartz.getJobName(),
                         quartz.getJobGroup())
                 .withDescription(quartz.getDescription()).build();
+        //方法名
         job.getJobDataMap().put("jobMethodName", quartz.getJobMethodName());
+        //方法参数
+        if (!StringUtils.isEmpty(quartz.getJobMethodArgs())) {
+            job.getJobDataMap().put("jobMethodArgs", quartz.getJobMethodArgs());
+        }
         // 触发时间点
         CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule(quartz.getCronExpression());
         Trigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger"+quartz.getJobName(), quartz.getJobGroup())
@@ -93,7 +104,6 @@ public class JobServiceImpl implements IJobService {
         scheduler.unscheduleJob(triggerKey);
         // 删除任务
         scheduler.deleteJob(JobKey.jobKey(quartz.getJobName(), quartz.getJobGroup()));
-        System.out.println("removeJob:"+JobKey.jobKey(quartz.getJobName()));
     }
 
 }

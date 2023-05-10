@@ -15,6 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+
+/**
+ * @author xuzhen
+ * @version 1.0
+ * @date 2023/5/5 16:05
+ */
 @RestController
 @RequestMapping("/job")
 public class JobController {

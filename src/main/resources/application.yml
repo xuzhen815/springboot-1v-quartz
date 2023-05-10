@@ -24,9 +24,9 @@ spring:
     maxActive: 50
     # 获取连接最大等待时间
     maxWait: 60000
-  devtools:
-    livereload:
-      enabled: true
+#  devtools:
+#    livereload:
+#      enabled: true
   mvc:
     static-path-pattern: /**
   thymeleaf:

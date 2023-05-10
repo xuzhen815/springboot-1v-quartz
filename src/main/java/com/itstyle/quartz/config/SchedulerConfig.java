@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 /**
- * quartz配置
- * 创建者 爪哇笔记
- * 创建时间	2018年4月3日
+ * @author xuzhen
+ * @version 1.0
+ * @date 2023/5/5 16:05
  */
 @Configuration
 public class SchedulerConfig {
